@@ -51,3 +51,10 @@
 
 * **:** is `~/src` alias
 * **::** is `~/src/views` alias
+
+## configure
+
+* development configure file at `config/development.cfg`
+* production configure file at `config/configure.cfg`
+
+Liscens
