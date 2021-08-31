@@ -57,4 +57,6 @@
 * development configure file at `config/development.cfg`
 * production configure file at `config/configure.cfg`
 
-Liscens
+## LICENCES
+
+[MIT LICENCES](LICENSE)
