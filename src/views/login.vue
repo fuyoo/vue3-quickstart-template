@@ -52,16 +52,18 @@ export default {
         if (valid) {
           request.post('/login', this.form)
               .then(async res => {
-                if (this.form.save) {
-                  await storage.setItem('token', res.data.token)
-                  await this.$router.push('/')
-                } else {
-                  await storage.session.setItem('token', res.data.data)
-                  await this.$router.push('/')
+                const {code,data,msg} = res.data
+                if (code !== 200) {
+                  return this.$message.error(msg)
                 }
+                if (this.form.save) {
+                  await storage.setItem('token', data)
+                } else {
+                  await storage.session.setItem('token', data)
+                }
+                await this.$router.push('/')
               })
         } else {
-          console.log('error submit!!')
           return false
         }
       })

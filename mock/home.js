@@ -12,6 +12,7 @@ module.exports = [{
   }
 }, {
   method: 'get',
+  auth: false,
   path: '/home/:id',// request http://url/home/id?q=1 by get method
   handler: async ({ params, query, body, headers }) => {
     return process.response.ok({

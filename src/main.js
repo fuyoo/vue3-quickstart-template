@@ -13,3 +13,4 @@ Object.keys(ElIcon).forEach(item => {
 vueApp.use(router)
 vueApp.use(ElementPlus, { size: 'small' })
 vueApp.mount('#app')
+
