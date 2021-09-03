@@ -13,7 +13,8 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">
-          <i class="el-icon-upload2"></i>登录</el-button>
+          <i class="el-icon-upload2"></i>登录
+        </el-button>
         <el-button @click="onReset">取消</el-button>
       </el-form-item>
     </el-form>
@@ -52,7 +53,7 @@ export default {
         if (valid) {
           request.post('/login', this.form)
               .then(async res => {
-                const {code,data,msg} = res.data
+                const { code, data, msg } = res.data
                 if (code !== 200) {
                   return this.$message.error(msg)
                 }
@@ -85,21 +86,40 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("http://desktop.hmim.net/desktop/img/rand") no-repeat center center;
-  background-size: cover;
+  background: url("http://desktop.hmim.net/desktop/img/rand") 0 / cover fixed;
 
   .login-form {
     width: 360px;
     padding: 15px;
-    border: 1px solid $border;
-    margin-top: -60px;
     border-radius: 8px;
-    background: #ffffffaa;
-    box-shadow: 0 0 300px #0005;
+    position: relative;
+    margin-top: -60px;
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid #0003;
+    box-shadow: 0 0 20px #0005;
+
+    ::v-deep(.el-form-item__label) {
+      color: #fff;
+    }
 
     p {
       text-align: center;
+      color: #fff;
     }
+  }
+
+  .login-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("http://desktop.hmim.net/desktop/img/rand") 0 / cover fixed;
+    filter: blur(6px);
+    z-index: -1;
+    margin: -30px;
   }
 }
 </style>
